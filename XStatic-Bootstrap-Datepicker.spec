@@ -4,7 +4,7 @@
 #
 Name     : XStatic-Bootstrap-Datepicker
 Version  : 1.3.1.0
-Release  : 13
+Release  : 14
 URL      : https://pypi.python.org/packages/source/X/XStatic-Bootstrap-Datepicker/XStatic-Bootstrap-Datepicker-1.3.1.0.tar.gz
 Source0  : https://pypi.python.org/packages/source/X/XStatic-Bootstrap-Datepicker/XStatic-Bootstrap-Datepicker-1.3.1.0.tar.gz
 Summary  : Bootstrap-Datepicker 1.3.1 (XStatic packaging standard)
