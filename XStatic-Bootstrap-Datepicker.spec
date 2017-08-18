@@ -4,24 +4,36 @@
 #
 Name     : XStatic-Bootstrap-Datepicker
 Version  : 1.3.1.0
-Release  : 15
-URL      : https://pypi.python.org/packages/source/X/XStatic-Bootstrap-Datepicker/XStatic-Bootstrap-Datepicker-1.3.1.0.tar.gz
-Source0  : https://pypi.python.org/packages/source/X/XStatic-Bootstrap-Datepicker/XStatic-Bootstrap-Datepicker-1.3.1.0.tar.gz
+Release  : 16
+URL      : http://pypi.debian.net/XStatic-Bootstrap-Datepicker/XStatic-Bootstrap-Datepicker-1.3.1.0.tar.gz
+Source0  : http://pypi.debian.net/XStatic-Bootstrap-Datepicker/XStatic-Bootstrap-Datepicker-1.3.1.0.tar.gz
 Summary  : Bootstrap-Datepicker 1.3.1 (XStatic packaging standard)
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: XStatic-Bootstrap-Datepicker-python
+BuildRequires : pbr
+BuildRequires : pip
 BuildRequires : python-dev
+BuildRequires : python3-dev
 BuildRequires : setuptools
 
 %description
-XStatic-Bootstrap-Datepicker
 --------------
-Bootstrap-Datepicker JavaScript library packaged for setuptools (easy_install) / pip.
+        
+        Bootstrap-Datepicker JavaScript library packaged for setuptools (easy_install) / pip.
+        
+        This package is intended to be used by **any** project that needs these files.
+        
+        It intentionally does **not** provide any extra code except some metadata
+        **nor** has any extra requirements. You MAY use some minimal support code from
+        the XStatic base package, if you like.
+        
+        You can find more info about the xstatic packaging way in the package `XStatic`.
 
 %package python
 Summary: python components for the XStatic-Bootstrap-Datepicker package.
 Group: Default
+Provides: xstatic-bootstrap-datepicker-python
 
 %description python
 python components for the XStatic-Bootstrap-Datepicker package.
@@ -31,15 +43,27 @@ python components for the XStatic-Bootstrap-Datepicker package.
 %setup -q -n XStatic-Bootstrap-Datepicker-1.3.1.0
 
 %build
-%{__python} setup.py build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+export LANG=C
+export SOURCE_DATE_EPOCH=1503087887
+python2 setup.py build -b py2
+python3 setup.py build -b py3
 
 %install
+export SOURCE_DATE_EPOCH=1503087887
 rm -rf %{buildroot}
-%{__python} setup.py install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+/usr/lib/python2*/*
+/usr/lib/python3*/*
