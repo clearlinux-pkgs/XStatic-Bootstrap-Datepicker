@@ -4,16 +4,17 @@
 #
 Name     : XStatic-Bootstrap-Datepicker
 Version  : 1.3.1.0
-Release  : 16
+Release  : 17
 URL      : http://pypi.debian.net/XStatic-Bootstrap-Datepicker/XStatic-Bootstrap-Datepicker-1.3.1.0.tar.gz
 Source0  : http://pypi.debian.net/XStatic-Bootstrap-Datepicker/XStatic-Bootstrap-Datepicker-1.3.1.0.tar.gz
 Summary  : Bootstrap-Datepicker 1.3.1 (XStatic packaging standard)
 Group    : Development/Tools
 License  : Apache-2.0
+Requires: XStatic-Bootstrap-Datepicker-python3
 Requires: XStatic-Bootstrap-Datepicker-python
+BuildRequires : buildreq-distutils3
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
@@ -33,10 +34,20 @@ BuildRequires : setuptools
 %package python
 Summary: python components for the XStatic-Bootstrap-Datepicker package.
 Group: Default
+Requires: XStatic-Bootstrap-Datepicker-python3
 Provides: xstatic-bootstrap-datepicker-python
 
 %description python
 python components for the XStatic-Bootstrap-Datepicker package.
+
+
+%package python3
+Summary: python3 components for the XStatic-Bootstrap-Datepicker package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the XStatic-Bootstrap-Datepicker package.
 
 
 %prep
@@ -47,15 +58,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1503087887
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1532214278
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1503087887
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -65,5 +73,7 @@ echo ----[ mark ]----
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python2*/*
+
+%files python3
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
