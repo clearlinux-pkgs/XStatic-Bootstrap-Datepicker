@@ -4,7 +4,7 @@
 #
 Name     : XStatic-Bootstrap-Datepicker
 Version  : 1.3.1.0
-Release  : 17
+Release  : 18
 URL      : http://pypi.debian.net/XStatic-Bootstrap-Datepicker/XStatic-Bootstrap-Datepicker-1.3.1.0.tar.gz
 Source0  : http://pypi.debian.net/XStatic-Bootstrap-Datepicker/XStatic-Bootstrap-Datepicker-1.3.1.0.tar.gz
 Summary  : Bootstrap-Datepicker 1.3.1 (XStatic packaging standard)
