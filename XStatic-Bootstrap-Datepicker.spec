@@ -4,7 +4,7 @@
 #
 Name     : XStatic-Bootstrap-Datepicker
 Version  : 1.4.0.0
-Release  : 24
+Release  : 25
 URL      : https://files.pythonhosted.org/packages/49/58/e42f9a04888a01b1a52ab0a37f13ba219be1074f35d7b16e2ce75200d203/XStatic-Bootstrap-Datepicker-1.4.0.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/49/58/e42f9a04888a01b1a52ab0a37f13ba219be1074f35d7b16e2ce75200d203/XStatic-Bootstrap-Datepicker-1.4.0.0.tar.gz
 Summary  : Bootstrap-Datepicker 1.4.0 (XStatic packaging standard)
